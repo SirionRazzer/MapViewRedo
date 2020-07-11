@@ -48,10 +48,10 @@ public class AdvancedMarkLayer extends MapBaseLayer {
     private List<Mark> createMarks(List<Infrastructure> infrastructures, List<Poi> pois) {
         List<Mark> marks = new LinkedList<>();
         for (Infrastructure i : infrastructures) {
-            this.marks.add(new Mark(i.getX().floatValue(),i.getY().floatValue(),true, i.getType().toString(), i.getType()));
+            marks.add(new Mark(i.getX().floatValue(),i.getY().floatValue(),true, i.getType().toString(), i.getType()));
         }
         for(Poi p : pois) {
-            this.marks.add(new Mark(p.getX().floatValue(), p.getY().floatValue(), false, p.getName(), InfrastructureType.UNKNOWN));
+            marks.add(new Mark(p.getX().floatValue(), p.getY().floatValue(), false, p.getName(), InfrastructureType.UNKNOWN));
         }
         return marks;
     }
