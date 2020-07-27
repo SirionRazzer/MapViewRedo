@@ -85,7 +85,7 @@ public class RouteLayer extends MapBaseLayer {
                     currentMatrix.mapPoints(goal1);
                     currentMatrix.mapPoints(goal2);
                     //For test
-                    paint.setColor(Color.rgb((int) (Math.random() * 255d), (int) (Math.random() * 255d), (int) (Math.random() * 255d)));
+                    paint.setColor(Color.rgb(0, 0, 152));
                     paint.setStrokeWidth(routeWidth);
                     canvas.drawLine(goal1[0], goal1[1], goal2[0], goal2[1], paint);
                 }
