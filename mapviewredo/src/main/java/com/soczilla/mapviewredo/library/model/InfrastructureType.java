@@ -18,5 +18,6 @@ public enum InfrastructureType {
     DEFIBRILATOR,
     CAR_WASH,
     RELAXATION_ZONE,
-    PRAYER_ROOM
+    PRAYER_ROOM,
+    SENSOR
 }
