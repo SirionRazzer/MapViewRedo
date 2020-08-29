@@ -61,7 +61,7 @@ public class Poi {
         return iconImage;
     }
 
-    public PoiType getType() {
+    public PoiType getPoiType() {
         return type;
     }
 }

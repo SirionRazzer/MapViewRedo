@@ -7,14 +7,16 @@ public class Mark {
     private String name;
     private PoiType poiType;
     private InfrastructureType infrastructureType;
+    private String textExtra;
 
-    public Mark(float x, float y, Boolean isInfrastructure, String name, PoiType poiType, InfrastructureType infrastructureType) {
+    public Mark(float x, float y, Boolean isInfrastructure, String name, PoiType poiType, InfrastructureType infrastructureType, String textExtra) {
         this.x = x;
         this.y = y;
         this.isInfrastructure = isInfrastructure;
         this.name = name;
         this.poiType = poiType;
         this.infrastructureType = infrastructureType;
+        this.textExtra = textExtra;
     }
 
     public float getX() {
@@ -59,5 +61,13 @@ public class Mark {
 
     public void setPoiType(PoiType poiType) {
         this.poiType = poiType;
+    }
+
+    public String getTextExtra() {
+        return textExtra;
+    }
+
+    public void setTextExtra(String textExtra) {
+        this.textExtra = textExtra;
     }
 }

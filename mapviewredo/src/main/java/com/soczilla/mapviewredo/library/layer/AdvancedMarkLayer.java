@@ -59,16 +59,18 @@ public class AdvancedMarkLayer extends MapBaseLayer {
                     i.getY().floatValue(),
                     true,
                     i.getInfrastructureType().toString(),
-                    PoiType.UNKNOWN,
-                    i.getInfrastructureType()));
+                    null,
+                    i.getInfrastructureType(),
+                    null));
         }
         for (Poi p : pois) {
             marks.add(new Mark(p.getX().floatValue(),
                     p.getY().floatValue(),
                     false,
                     p.getName(),
-                    p.getType(),
-                    InfrastructureType.UNKNOWN));
+                    p.getPoiType(),
+                    null,
+                    p.getDescription()));
         }
         return marks;
     }
@@ -196,6 +198,14 @@ public class AdvancedMarkLayer extends MapBaseLayer {
                     if (i == num && isClickMark) {
                         canvas.drawBitmap(bmpMarkTouch, goal[0] - bmpMarkTouch.getWidth() / 2,
                                 goal[1] - bmpMarkTouch.getHeight(), paint);
+
+                        //mark's additional text only for pois
+                        if (marks.get(i).getPoiType() != null) {
+                            if (mapView.getCurrentZoom() > 1.0 && marks.get(i).getTextExtra() != null) {
+                                canvas.drawText(marks.get(i).getTextExtra(), goal[0] - radiusMark, goal[1] -
+                                        radiusMark / 2, paint);
+                            }
+                        }
                     }
                 }
             }
