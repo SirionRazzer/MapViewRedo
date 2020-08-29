@@ -27,7 +27,14 @@ public class AdvancedMarkLayer extends MapBaseLayer {
 
     private MarkIsClickListener listener;
 
-    private Bitmap bmpMark, bmpMarkTouch;
+    private Bitmap bmpMark,
+            bmpMark1,
+            bmpMark2,
+            bmpMark3,
+            bmpMark4,
+            bmpMark5,
+            bmpMark6sensor,
+            bmpMarkTouch;
 
     private float radiusMark;
     private boolean isClickMark = false;
@@ -48,10 +55,20 @@ public class AdvancedMarkLayer extends MapBaseLayer {
     private List<Mark> createMarks(List<Infrastructure> infrastructures, List<Poi> pois) {
         List<Mark> marks = new LinkedList<>();
         for (Infrastructure i : infrastructures) {
-            marks.add(new Mark(i.getX().floatValue(),i.getY().floatValue(),true, i.getType().toString(), i.getType()));
+            marks.add(new Mark(i.getX().floatValue(),
+                    i.getY().floatValue(),
+                    true,
+                    i.getInfrastructureType().toString(),
+                    PoiType.UNKNOWN,
+                    i.getInfrastructureType()));
         }
-        for(Poi p : pois) {
-            marks.add(new Mark(p.getX().floatValue(), p.getY().floatValue(), false, p.getName(), InfrastructureType.UNKNOWN));
+        for (Poi p : pois) {
+            marks.add(new Mark(p.getX().floatValue(),
+                    p.getY().floatValue(),
+                    false,
+                    p.getName(),
+                    p.getType(),
+                    InfrastructureType.UNKNOWN));
         }
         return marks;
     }
@@ -59,12 +76,23 @@ public class AdvancedMarkLayer extends MapBaseLayer {
     private void initLayer() {
         radiusMark = setValue(10f);
 
-        bmpMark = BitmapFactory.decodeResource(mapView.getResources(), R.mipmap.mark);
-        bmpMarkTouch = BitmapFactory.decodeResource(mapView.getResources(), R.mipmap.mark_touch);
+        loadMarks();
 
         paint = new Paint();
         paint.setAntiAlias(true);
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
+    }
+
+    private void loadMarks() {
+        bmpMark = BitmapFactory.decodeResource(mapView.getResources(), R.mipmap.mark);
+        bmpMark1 = BitmapFactory.decodeResource(mapView.getResources(), R.mipmap.mark1);
+        bmpMark2 = BitmapFactory.decodeResource(mapView.getResources(), R.mipmap.mark2);
+        bmpMark3 = BitmapFactory.decodeResource(mapView.getResources(), R.mipmap.mark3);
+        bmpMark4 = BitmapFactory.decodeResource(mapView.getResources(), R.mipmap.mark4);
+        bmpMark5 = BitmapFactory.decodeResource(mapView.getResources(), R.mipmap.mark5);
+        bmpMark6sensor = BitmapFactory.decodeResource(mapView.getResources(), R.mipmap.mark6sensor);
+        bmpMarkTouch = BitmapFactory.decodeResource(mapView.getResources(), R.mipmap.mark_touch);
+
     }
 
     @Override
@@ -112,9 +140,59 @@ public class AdvancedMarkLayer extends MapBaseLayer {
                         canvas.drawText(marks.get(i).getName(), goal[0] - radiusMark, goal[1] -
                                 radiusMark / 2, paint);
                     }
-                    //mark ico
-                    canvas.drawBitmap(bmpMark, goal[0] - bmpMark.getWidth() / 2,
-                            goal[1] - bmpMark.getHeight() / 2, paint);
+                    //mark ico (should be infra or poi, not both
+                    // draw infrastructure mark
+                    if (marks.get(i).getInfrastructureType() != null) {
+                        switch (marks.get(i).getInfrastructureType()) {
+                            case UNKNOWN:
+                                canvas.drawBitmap(bmpMark, goal[0] - bmpMark.getWidth() / 2,
+                                        goal[1] - bmpMark.getHeight() / 2, paint);
+                                break;
+                            case SENSOR:
+                                canvas.drawBitmap(bmpMark6sensor, goal[0] - bmpMark6sensor.getWidth() / 2,
+                                        goal[1] - bmpMark6sensor.getHeight() / 2, paint);
+                                break;
+                            default:
+                                canvas.drawBitmap(bmpMark, goal[0] - bmpMark.getWidth() / 2,
+                                        goal[1] - bmpMark.getHeight() / 2, paint);
+                        }
+                        canvas.drawBitmap(bmpMark, goal[0] - bmpMark.getWidth() / 2,
+                                goal[1] - bmpMark.getHeight() / 2, paint);
+                    }
+                    // draw poi mark
+
+                    if (marks.get(i).getPoiType() != null) {
+                        switch (marks.get(i).getPoiType()) {
+                            case UNKNOWN:
+                                canvas.drawBitmap(bmpMark, goal[0] - bmpMark.getWidth() / 2,
+                                        goal[1] - bmpMark.getHeight() / 2, paint);
+                                break;
+                            case RESTAURANT:
+                                canvas.drawBitmap(bmpMark1, goal[0] - bmpMark1.getWidth() / 2,
+                                        goal[1] - bmpMark1.getHeight() / 2, paint);
+                                break;
+                            case FOOD_AND_DRINK:
+                                canvas.drawBitmap(bmpMark2, goal[0] - bmpMark2.getWidth() / 2,
+                                        goal[1] - bmpMark2.getHeight() / 2, paint);
+                                break;
+                            case GROCERIES:
+                                canvas.drawBitmap(bmpMark3, goal[0] - bmpMark3.getWidth() / 2,
+                                        goal[1] - bmpMark3.getHeight() / 2, paint);
+                                break;
+                            case LUXURY_RETAILERS:
+                                canvas.drawBitmap(bmpMark4, goal[0] - bmpMark4.getWidth() / 2,
+                                        goal[1] - bmpMark4.getHeight() / 2, paint);
+                                break;
+                            case FASHION:
+                                canvas.drawBitmap(bmpMark5, goal[0] - bmpMark5.getWidth() / 2,
+                                        goal[1] - bmpMark5.getHeight() / 2, paint);
+                                break;
+                            default:
+                                canvas.drawBitmap(bmpMark1, goal[0] - bmpMark1.getWidth() / 2,
+                                        goal[1] - bmpMark1.getHeight() / 2, paint);
+                        }
+                    }
+
                     if (i == num && isClickMark) {
                         canvas.drawBitmap(bmpMarkTouch, goal[0] - bmpMarkTouch.getWidth() / 2,
                                 goal[1] - bmpMarkTouch.getHeight(), paint);

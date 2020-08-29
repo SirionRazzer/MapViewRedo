@@ -35,7 +35,7 @@ public class Infrastructure {
         return z;
     }
 
-    public InfrastructureType getType() {
+    public InfrastructureType getInfrastructureType() {
         return type;
     }
 

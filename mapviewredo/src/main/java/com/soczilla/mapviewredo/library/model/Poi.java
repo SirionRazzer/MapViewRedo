@@ -6,17 +6,19 @@ public class Poi {
     private Integer y;
     private Integer z;
     private String name;
+    private PoiType type;
     private String description;
     private String url;
     private Boolean isFavorite;
     private String iconImage;
 
-    public Poi(Long id, Integer x, Integer y, Integer z, String name, String description, String url, Boolean isFavorite, String iconImage) {
+    public Poi(Long id, Integer x, Integer y, Integer z, String name, PoiType type, String description, String url, Boolean isFavorite, String iconImage) {
         this.id = id;
         this.x = x;
         this.y = y;
         this.z = z;
         this.name = name;
+        this.type = type;
         this.description = description;
         this.url = url;
         this.isFavorite = isFavorite;
@@ -57,5 +59,9 @@ public class Poi {
 
     public String getIconImage() {
         return iconImage;
+    }
+
+    public PoiType getType() {
+        return type;
     }
 }

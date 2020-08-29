@@ -5,14 +5,16 @@ public class Mark {
     private float y;
     private Boolean isInfrastructure;
     private String name;
-    private InfrastructureType type;
+    private PoiType poiType;
+    private InfrastructureType infrastructureType;
 
-    public Mark(float x, float y, Boolean isInfrastructure, String name, InfrastructureType type) {
+    public Mark(float x, float y, Boolean isInfrastructure, String name, PoiType poiType, InfrastructureType infrastructureType) {
         this.x = x;
         this.y = y;
         this.isInfrastructure = isInfrastructure;
         this.name = name;
-        this.type = type;
+        this.poiType = poiType;
+        this.infrastructureType = infrastructureType;
     }
 
     public float getX() {
@@ -39,15 +41,23 @@ public class Mark {
         isInfrastructure = infrastructure;
     }
 
-    public InfrastructureType getType() {
-        return type;
+    public InfrastructureType getInfrastructureType() {
+        return infrastructureType;
     }
 
-    public void setType(InfrastructureType type) {
-        this.type = type;
+    public void setInfrastructureType(InfrastructureType infrastructureType) {
+        this.infrastructureType = infrastructureType;
     }
 
     public String getName() {
         return name;
+    }
+
+    public PoiType getPoiType() {
+        return poiType;
+    }
+
+    public void setPoiType(PoiType poiType) {
+        this.poiType = poiType;
     }
 }
