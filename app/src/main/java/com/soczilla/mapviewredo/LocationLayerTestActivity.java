@@ -86,13 +86,13 @@ public class LocationLayerTestActivity extends AppCompatActivity implements Sens
                     float rotate = 90;
                     locationLayer.setCompassIndicatorCircleRotateDegree(rotate);
                     mapView.refresh();
-                    Toast.makeText(this, "circle rotate: " + rotate, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "circle rotate: " + rotate, Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.location_layer_set_compass_arrow_rotate:
                     rotate = 30;
                     locationLayer.setCompassIndicatorArrowRotateDegree(rotate);
                     mapView.refresh();
-                    Toast.makeText(this, "arrow rotate: " + rotate, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "arrow rotate: " + rotate, Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.location_layer_set_auto_sensor:
                     if (openSensor) {

@@ -40,8 +40,8 @@ public class MarkLayerTestActivity extends AppCompatActivity {
                 markLayer.setMarkIsClickListener(new MarkLayer.MarkIsClickListener() {
                     @Override
                     public void markIsClick(int num) {
-                        Toast.makeText(getApplicationContext(), marksName.get(num) + " is " +
-                                "selected", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(), marksName.get(num) + " is " +
+//                                "selected", Toast.LENGTH_SHORT).show();
                     }
                 });
                 mapView.addLayer(markLayer);

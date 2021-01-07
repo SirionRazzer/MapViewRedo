@@ -63,7 +63,7 @@ public class MapLayerTestActivity extends AppCompatActivity {
                     mapView.setCurrentRotateDegrees(rotate);
                     mapView.refresh();
 
-                    Toast.makeText(this, "current rotate: " + rotate, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "current rotate: " + rotate, Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.map_layer_set_zoom1:
                     mapView.setCurrentZoom(mapView.getCurrentZoom() / 2);

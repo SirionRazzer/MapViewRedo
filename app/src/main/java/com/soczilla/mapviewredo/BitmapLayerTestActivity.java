@@ -3,7 +3,9 @@ package com.soczilla.mapviewredo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -17,7 +19,6 @@ import java.io.IOException;
 import java.util.Random;
 
 public class BitmapLayerTestActivity extends AppCompatActivity {
-
 
     private static final String TAG = "BitmapLayerTestActivity";
 
@@ -48,7 +49,7 @@ public class BitmapLayerTestActivity extends AppCompatActivity {
                 bitmapLayer.setOnBitmapClickListener(new BitmapLayer.OnBitmapClickListener() {
                     @Override
                     public void onBitmapClick(BitmapLayer layer) {
-                        Toast.makeText(getApplicationContext(), "click", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "click", Toast.LENGTH_SHORT).show();
                     }
                 });
                 mapView.addLayer(bitmapLayer);
