@@ -102,16 +102,27 @@ public class AdvancedMarkLayer extends MapBaseLayer {
         if (marks != null) {
             if (!marks.isEmpty()) {
                 float[] goal = mapView.convertMapXYToScreenXY(event.getX(), event.getY());
+                float bestDistance = Float.MAX_VALUE;
+                boolean foundClickmark = false;
+                int clickmarkIndex = 0;
                 for (int i = 0; i < marks.size(); i++) {
-                    if (MapMath.getDistanceBetweenTwoPoints(goal[0], goal[1],
+                    float distance = MapMath.getDistanceBetweenTwoPoints(goal[0], goal[1],
                             marks.get(i).getX() - bmpMark.getWidth() / 2, marks.get(i).getY() - bmpMark
-                                    .getHeight() / 2) <= 78) {
-                        num = i;
-                        isClickMark = true;
-                        break;
+                                    .getHeight() / 2);
+
+                    if (distance <= 78 && distance <= bestDistance) {
+                        bestDistance = distance;
+                        clickmarkIndex = i;
+                        foundClickmark = true;
                     }
 
                     if (i == marks.size() - 1) {
+                        if (foundClickmark) {
+                            num = clickmarkIndex;
+                            isClickMark = true;
+                            break;
+                        }
+
                         isClickMark = false;
                     }
                 }
