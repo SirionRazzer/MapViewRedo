@@ -107,8 +107,7 @@ public class AdvancedMarkLayer extends MapBaseLayer {
                 int clickmarkIndex = 0;
                 for (int i = 0; i < marks.size(); i++) {
                     float distance = MapMath.getDistanceBetweenTwoPoints(goal[0], goal[1],
-                            marks.get(i).getX() - bmpMark.getWidth() / 2, marks.get(i).getY() - bmpMark
-                                    .getHeight() / 2);
+                            marks.get(i).getX(), marks.get(i).getY());
 
                     if (distance <= 78 && distance <= bestDistance) {
                         bestDistance = distance;
